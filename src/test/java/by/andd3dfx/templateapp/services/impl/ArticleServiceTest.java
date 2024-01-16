@@ -85,7 +85,7 @@ class ArticleServiceTest {
         when(articleRepositoryMock.findById(ARTICLE_ID)).thenReturn(optionalArticle);
         when(articleMapperMock.toArticleDto(article)).thenReturn(articleDto);
 
-        ArticleDto result = articleService.read(ARTICLE_ID);
+        ArticleDto result = articleService.get(ARTICLE_ID);
 
         verify(articleRepositoryMock).findById(ARTICLE_ID);
         verify(articleMapperMock).toArticleDto(article);
@@ -99,7 +99,7 @@ class ArticleServiceTest {
         when(articleRepositoryMock.findById(ARTICLE_ID)).thenReturn(optionalArticle);
 
         try {
-            articleService.read(ARTICLE_ID);
+            articleService.get(ARTICLE_ID);
 
             fail("Exception should be thrown");
         } catch (ArticleNotFoundException ex) {

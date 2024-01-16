@@ -5,13 +5,15 @@ import by.andd3dfx.templateapp.dto.ArticleUpdateDto;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
+import java.util.List;
+
 public interface IArticleService {
 
     ArticleDto create(ArticleDto articleDto);
 
-    ArticleDto read(Long id);
+    ArticleDto get(Long id);
 
-    ArticleDto update(Long id, ArticleUpdateDto articleUpdateDto);
+    void update(Long id, ArticleUpdateDto articleUpdateDto);
 
     void delete(Long id);
 

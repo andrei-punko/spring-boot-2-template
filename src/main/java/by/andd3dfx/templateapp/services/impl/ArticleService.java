@@ -13,6 +13,8 @@ import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ArticleService implements IArticleService {
@@ -30,7 +32,7 @@ public class ArticleService implements IArticleService {
 
     @Transactional(readOnly = true)
     @Override
-    public ArticleDto read(Long id) {
+    public ArticleDto get(Long id) {
         return articleRepository.findById(id)
             .map(articleMapper::toArticleDto)
             .orElseThrow(() -> new ArticleNotFoundException(id));
@@ -38,8 +40,8 @@ public class ArticleService implements IArticleService {
 
     @Transactional
     @Override
-    public ArticleDto update(Long id, ArticleUpdateDto articleUpdateDto) {
-        return articleRepository.findById(id)
+    public void update(Long id, ArticleUpdateDto articleUpdateDto) {
+        articleRepository.findById(id)
             .map(article -> {
                 articleMapper.toArticle(articleUpdateDto, article);
                 Article savedArticle = articleRepository.save(article);

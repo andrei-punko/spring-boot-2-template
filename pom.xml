@@ -4,23 +4,23 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>by.andd3dfx</groupId>
-	<artifactId>spring-boot-3-template</artifactId>
+	<artifactId>spring-boot-2-template</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>spring-boot-3-template</name>
-	<description>Template project for Spring Boot 3</description>
+	<name>spring-boot-2-template</name>
+	<description>Template project for Spring Boot 2</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 		<java.version>17</java.version>
-		<mapstruct.version>1.5.5.Final</mapstruct.version>
-		<spring-boot.version>3.2.1</spring-boot.version>
 
-		<swagger.version>3.0.0</swagger.version>
-		<swagger-core.version>2.2.20</swagger-core.version>
-		<springdoc.version>2.3.0</springdoc.version>
+		<spring-boot.version>2.7.18</spring-boot.version>
+		<mapstruct.version>1.5.5.Final</mapstruct.version>
+		<lombok.version>1.18.30</lombok.version>
+		<springdoc.version>1.7.0</springdoc.version>
+		<swagger.version>1.6.12</swagger.version>
+		<testcontainers.version>1.19.3</testcontainers.version>
 	</properties>
 
 	<!-- Use BOM (Bill of materials) for JUnit & Spring Boot -->
@@ -76,6 +76,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -89,25 +90,21 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 
+		<!-- Swagger -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>${springdoc.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
 			<version>${swagger.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>io.swagger.core.v3</groupId>
-			<artifactId>swagger-annotations</artifactId>
-			<version>${swagger-core.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.swagger.core.v3</groupId>
+			<groupId>io.swagger</groupId>
 			<artifactId>swagger-models</artifactId>
-			<version>${swagger-core.version}</version>
+			<version>${swagger.version}</version>
 		</dependency>
 
 		<dependency>
@@ -137,16 +134,19 @@
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>postgresql</artifactId>
+			<version>${testcontainers.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>testcontainers</artifactId>
+			<version>${testcontainers.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>junit-jupiter</artifactId>
+			<version>${testcontainers.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -156,11 +156,13 @@
 			<!-- Explicitly set maven-surefire-plugin version, according to: -->
 			<!-- https://stackoverflow.com/questions/54414274/override-the-version-of-maven-surefire-plugin-inherited-from-a-maven-import -->
 			<plugin>
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.2.5</version>
 			</plugin>
 
 			<plugin>
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.12.1</version>
 				<configuration>
@@ -175,6 +177,7 @@
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
 						</path>
 						<!-- This is needed when using Lombok 1.18.16 and above -->
 						<!-- According to: https://stackoverflow.com/questions/47676369/mapstruct-and-lombok-not-working-together -->
@@ -212,7 +215,7 @@
 					</goals>
 				  </execution>
 				  <execution>
-					  <id>report</id>
+					<id>report</id>
 					<phase>prepare-package</phase>
 					<goals>
 					  <goal>report</goal>
