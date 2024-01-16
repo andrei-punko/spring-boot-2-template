@@ -156,13 +156,13 @@
 			<!-- Explicitly set maven-surefire-plugin version, according to: -->
 			<!-- https://stackoverflow.com/questions/54414274/override-the-version-of-maven-surefire-plugin-inherited-from-a-maven-import -->
 			<plugin>
-<!--				<groupId>org.apache.maven.plugins</groupId>-->
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.2.5</version>
 			</plugin>
 
 			<plugin>
-<!--				<groupId>org.apache.maven.plugins</groupId>-->
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.12.1</version>
 				<configuration>

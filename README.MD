@@ -54,7 +54,7 @@ Use [run.bat](./run.bat) script
     http://localhost:9080/api/v1/articles
 
 ## Swagger documentation:
-    http://localhost:9080/swagger-ui.html
+    http://localhost:9080/swagger-ui/index.html
 
 ## Useful CURL commands
 
