@@ -13,10 +13,14 @@ Supports CRUD set of operations and Read with pagination (see usage description 
 - JDK 21
 
 ## How to build:
-    mvn clean install
+```shell
+mvn clean install
+```
 
-#### Build Docker image with application inside:
-    docker build ./ -t backend-template-app
+### Build Docker image with application inside:
+```shell
+docker build --no-cache ./ -t spring-boot-redis-app
+```
 
 ## Start application using a starting script:
 Use [run.bat](./run.bat) script
@@ -82,3 +86,10 @@ curl -i 'http://localhost:9080/api/v1/articles?size=2&page=4&sort=author,DESC'
 ```bash
 curl -i -X DELETE http://localhost:9080/api/v1/articles/1
 ```
+
+## Run functional tests:
+
+    cd func-test
+    ./gradlew clean build
+
+Check functional test report [here](func-test/build/spock-reports/index.html)
