@@ -109,3 +109,7 @@ curl -i -X DELETE http://localhost:9080/api/v1/articles/1
     ./gradlew clean build
 
 Check functional test report [here](func-test/build/spock-reports/index.html)
+
+## Related project
+
+Same project but with usage of Spring Boot 3 available [here](https://github.com/andrei-punko/spring-boot-3-template)
