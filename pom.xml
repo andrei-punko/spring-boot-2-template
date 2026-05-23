@@ -20,7 +20,7 @@
 		<lombok.version>1.18.30</lombok.version>
 		<springdoc.version>1.7.0</springdoc.version>
 		<swagger.version>1.6.12</swagger.version>
-		<testcontainers.version>1.19.3</testcontainers.version>
+		<testcontainers.version>1.21.4</testcontainers.version>
 	</properties>
 
 	<!-- Use BOM (Bill of materials) for JUnit & Spring Boot -->
