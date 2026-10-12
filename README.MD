@@ -11,6 +11,7 @@ Supports CRUD set of operations and Read with pagination (see usage description 
 
 - Maven 3
 - JDK 21
+- Docker
 
 ## How to build:
 
